@@ -10,28 +10,29 @@ import XCTest
 @testable import AnimteMangaTopItemList
 
 class JikanClientTests: XCTestCase {
+  var baseURL: URL!
+  var session: URLSession!
   var sut: JikanClient!
   
+  override func setUp() {
+    super.setUp()
+    baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
+    session = URLSession.shared
+    sut = JikanClient(baseURL: baseURL, session: session)
+  }
+  
+  override func tearDown() {
+    baseURL = nil
+    session = nil
+    sut = nil
+    super.tearDown()
+  }
   
   func test_init_sets_baseURL() {
-    // given
-    let baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
-    let session = URLSession.shared
-    
-    // when
-    sut = JikanClient(baseURL: baseURL, session: session)
-    
-    // then
     XCTAssertEqual(sut.baseURL, baseURL)
   }
   
-  func test_init_sets_session() {
-    // given
-    let baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
-    let session = URLSession.shared
-    
-    // when
-    sut = JikanClient(baseURL: baseURL, session: session)
+  func test_init_sets_session() {    
     XCTAssertEqual(sut.session, session)
   }
 }
