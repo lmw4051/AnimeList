@@ -18,11 +18,14 @@ class JikanClientTests: XCTestCase {
     return URL(string: "anime/1/airing", relativeTo: baseURL)!
   }
   
+  // MARK: - Test Lifecycle
   override func setUp() {
     super.setUp()
     baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
     mockSession = MockURLSession()
-    sut = JikanClient(baseURL: baseURL, session: mockSession)
+    sut = JikanClient(baseURL: baseURL,
+                      session: mockSession,
+                      responseQueue: nil)
   }
   
   override func tearDown() {
@@ -32,6 +35,7 @@ class JikanClientTests: XCTestCase {
     super.tearDown()
   }
   
+  // MARK: - When
   func whenGetTopList(
     data: Data? = nil,
     statusCode: Int = 200,
@@ -57,12 +61,59 @@ class JikanClientTests: XCTestCase {
     return (calledCompletion, receivedAnimeItems, receivedError)
   }
   
+  // MARK: - Then
+  func verifyGetTopListDispatchedToMain(
+    data: Data? = nil,
+    statusCode: Int = 200,
+    error: Error? = nil,
+    line: UInt = #line) {
+    mockSession.givenDispatchQueue()
+    sut = JikanClient(baseURL: baseURL,
+                      session: mockSession,
+                      responseQueue: .main)
+    
+    let expectation = self.expectation(description: "Completion wasn't called")
+    
+    // when
+    var thread: Thread!
+    let mockTask = sut.getTopList(type: "anime", subType: "airing", page: 1) { animeResult, error in
+      thread = Thread.current
+      expectation.fulfill()
+    } as! MockURLSessionDataTask
+    
+    let response = HTTPURLResponse(url: getTopListURL,
+                                   statusCode: 200,
+                                   httpVersion: nil,
+                                   headerFields: nil)
+    
+    mockTask.completionHandler(nil, response, error)
+    
+    // then
+    waitForExpectations(timeout: 0.2) { _ in
+      XCTAssertTrue(thread.isMainThread, line: line)
+    }
+  }
+  
+  // MARK: - Object Lifecycle - Tests
   func test_init_sets_baseURL() {
     XCTAssertEqual(sut.baseURL, baseURL)
   }
   
   func test_init_sets_session() {
     XCTAssertEqual(sut.session, mockSession)
+  }
+  
+  func test_init_sets_responseQueue() {
+    // given
+    let responseQueue = DispatchQueue.main
+    
+    // when
+    sut = JikanClient(baseURL: baseURL,
+                      session: mockSession,
+                      responseQueue: responseQueue)
+    
+    // then
+    XCTAssertEqual(sut.responseQueue, responseQueue)
   }
   
   func test_getTopList_callsExpectedURL() {
@@ -107,7 +158,7 @@ class JikanClientTests: XCTestCase {
   
   func test_getTopList_givenValidJSON_callsCompletionWithAnimeResult() throws {
     // given
-    let data = try Data.fromJSON(fileName: "GET_AnimeResult_Response")
+    let data = try Data.fromJSON(fileName: "GET_AnimeResult_ValidResponse")
     let decoder = JSONDecoder()
     let animeResult = try decoder.decode(AnimeResult.self, from: data)
     
@@ -143,5 +194,33 @@ class JikanClientTests: XCTestCase {
     let actualError = try XCTUnwrap(result.error as NSError?)
     XCTAssertEqual(actualError.domain, expectedError.domain)
     XCTAssertEqual(actualError.code, expectedError.code)
+  }
+  
+  func test_getTopList_givenHTTPStatusError_dispatchesToResponseQueue() {
+    verifyGetTopListDispatchedToMain(statusCode: 500)
+  }
+  
+  func test_getTopList_givenError_dispatchesToResponseQueue() {
+    // given
+    let error = NSError(domain: "com.AnimeResultTests", code: 0)
+    
+    // then
+    verifyGetTopListDispatchedToMain(error: error)
+  }
+  
+  func test_getTopList_givenGoodResponse_dispatchesToResponseQueue() throws {
+    // given
+    let data = try Data.fromJSON(fileName: "GET_AnimeResult_ValidResponse")
+    
+    // then
+    verifyGetTopListDispatchedToMain(data: data)
+  }
+  
+  func test_getTopList_givenInvalidResponse_dispatchesToResponseQueue() throws {
+    // given
+    let data = try Data.fromJSON(fileName: "GET_MissingValues_Response")
+    
+    // then
+    verifyGetTopListDispatchedToMain(data: data)
   }
 }

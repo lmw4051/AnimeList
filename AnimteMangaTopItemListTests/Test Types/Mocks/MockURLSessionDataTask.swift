@@ -14,8 +14,18 @@ class MockURLSessionDataTask: URLSessionDataTask {
   var url: URL
   
   init(completionHandler: @escaping DataTaskResult,
-       url: URL) {
-    self.completionHandler = completionHandler
+       url: URL,
+       queue: DispatchQueue?) {
+    if let queue = queue {
+      self.completionHandler = { data, response, error in
+        queue.async {
+          completionHandler(data, response, error)
+        }
+      }
+    } else {
+      self.completionHandler = completionHandler
+    }
+    
     self.url = url
     super.init()
   }
