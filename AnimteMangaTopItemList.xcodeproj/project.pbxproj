@@ -18,6 +18,8 @@
 		54722AC2256A2D9B00CB8A1D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AC1256A2D9B00CB8A1D /* FavoritesViewController.swift */; };
 		54722AC7256A2FB500CB8A1D /* JikanClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AC6256A2FB500CB8A1D /* JikanClientTests.swift */; };
 		54722ACA256A302000CB8A1D /* JikanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AC9256A302000CB8A1D /* JikanClient.swift */; };
+		54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACD256A346B00CB8A1D /* MockURLSession.swift */; };
+		54722AD0256A347600CB8A1D /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		54722AC1256A2D9B00CB8A1D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		54722AC6256A2FB500CB8A1D /* JikanClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanClientTests.swift; sourceTree = "<group>"; };
 		54722AC9256A302000CB8A1D /* JikanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanClient.swift; sourceTree = "<group>"; };
+		54722ACD256A346B00CB8A1D /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +106,8 @@
 		54722AAE256A2B8600CB8A1D /* AnimteMangaTopItemListTests */ = {
 			isa = PBXGroup;
 			children = (
-				54722AC3256A2F6200CB8A1D /* Networking */,
+				54722ACC256A345B00CB8A1D /* Cases */,
+				54722ACB256A344F00CB8A1D /* Mocks */,
 				54722AAF256A2B8600CB8A1D /* AnimteMangaTopItemListTests.swift */,
 				54722AB1256A2B8600CB8A1D /* Info.plist */,
 			);
@@ -133,6 +138,23 @@
 				54722AC9256A302000CB8A1D /* JikanClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		54722ACB256A344F00CB8A1D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				54722ACD256A346B00CB8A1D /* MockURLSession.swift */,
+				54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		54722ACC256A345B00CB8A1D /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				54722AC3256A2F6200CB8A1D /* Networking */,
+			);
+			path = Cases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */,
+				54722AD0256A347600CB8A1D /* MockURLSessionDataTask.swift in Sources */,
 				54722AC7256A2FB500CB8A1D /* JikanClientTests.swift in Sources */,
 				54722AB0256A2B8600CB8A1D /* AnimteMangaTopItemListTests.swift in Sources */,
 			);
@@ -405,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36872U436D;
 				INFOPLIST_FILE = AnimteMangaTopItemList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,6 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36872U436D;
 				INFOPLIST_FILE = AnimteMangaTopItemList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

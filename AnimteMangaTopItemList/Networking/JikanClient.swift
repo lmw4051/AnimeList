@@ -16,4 +16,13 @@ class JikanClient {
     self.baseURL = baseURL
     self.session = session
   }
+  
+  func getTopList(completion: @escaping ([Any]?, Error?) -> Void) -> URLSessionDataTask {
+    let url = URL(string: "anime", relativeTo: baseURL)!
+    let task = session.dataTask(with: url) { (data, response, error) in
+      
+    }
+    task.resume()
+    return task
+  }
 }
