@@ -12,14 +12,26 @@ import XCTest
 class JikanClientTests: XCTestCase {
   var sut: JikanClient!
   
+  
   func test_init_sets_baseURL() {
     // given
     let baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
+    let session = URLSession.shared
     
     // when
-    sut = JikanClient(baseURL: baseURL)
+    sut = JikanClient(baseURL: baseURL, session: session)
     
     // then
     XCTAssertEqual(sut.baseURL, baseURL)
+  }
+  
+  func test_init_sets_session() {
+    // given
+    let baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
+    let session = URLSession.shared
+    
+    // when
+    sut = JikanClient(baseURL: baseURL, session: session)
+    XCTAssertEqual(sut.session, session)
   }
 }
