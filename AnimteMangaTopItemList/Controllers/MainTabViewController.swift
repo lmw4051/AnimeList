@@ -16,7 +16,13 @@ class MainTabViewController: UITabBarController {
   
   func configureViewControllers() {
     let homeVC = HomeViewController()
+    homeVC.tabBarItem.title = "Home"
+    homeVC.tabBarItem.image = UIImage(named: "home")
+    
     let favoritesVC = FavoritesViewController()
+    favoritesVC.tabBarItem.title = "Favorites"
+    favoritesVC.tabBarItem.image = UIImage(named: "heart")
+    
     viewControllers = [homeVC, favoritesVC]
   }
 }
