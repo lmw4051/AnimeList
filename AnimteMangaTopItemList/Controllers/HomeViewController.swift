@@ -9,6 +9,9 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+  
+  var networkClient = JikanClient.shared
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .red

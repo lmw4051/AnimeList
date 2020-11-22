@@ -141,6 +141,21 @@ class JikanClientTests: XCTestCase {
     XCTAssertEqual(sut.responseQueue, responseQueue)
   }
   
+  // MARK: - JikanService - Tests
+  func test_conformsTo_JikanService() {
+    XCTAssertTrue((sut as AnyObject) is JikanService)
+  }
+  
+  func test_JikanService_declaresGetTopList() {
+    // given
+    let service = sut as JikanService
+    
+    // then
+    _ = service.getTopList(type: "anime", subType: "airing", page: 1) { _, _ in }
+  }
+  
+  // MARK: -
+  
   func test_getTopList_callsExpectedURL() {
     // when
     let mockTask = sut.getTopList(type: "anime", subType: "airing", page: 1) { _, _ in } as! MockURLSessionDataTask

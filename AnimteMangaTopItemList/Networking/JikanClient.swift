@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol JikanService {
+  func getTopList(type: String, subType: String?, page: Int, completion: @escaping (AnimeResult?, Error?) -> Void) -> URLSessionDataTask
+}
+
 class JikanClient {
   let baseURL: URL
   let session: URLSession
@@ -76,3 +80,5 @@ class JikanClient {
     }
   }
 }
+
+extension JikanClient: JikanService { }
