@@ -20,6 +20,7 @@
 		54722ACA256A302000CB8A1D /* JikanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AC9256A302000CB8A1D /* JikanClient.swift */; };
 		54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACD256A346B00CB8A1D /* MockURLSession.swift */; };
 		54722AD0256A347600CB8A1D /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */; };
+		54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AD2256A41B700CB8A1D /* AnimeResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		54722AC9256A302000CB8A1D /* JikanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanClient.swift; sourceTree = "<group>"; };
 		54722ACD256A346B00CB8A1D /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		54722AD2256A41B700CB8A1D /* AnimeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		54722A97256A2B8600CB8A1D /* AnimteMangaTopItemList */ = {
 			isa = PBXGroup;
 			children = (
+				54722AD1256A415300CB8A1D /* Models */,
 				54722AC8256A301100CB8A1D /* Networking */,
 				54722ABA256A2CD000CB8A1D /* Controllers */,
 				54722A98256A2B8600CB8A1D /* AppDelegate.swift */,
@@ -155,6 +158,14 @@
 				54722AC3256A2F6200CB8A1D /* Networking */,
 			);
 			path = Cases;
+			sourceTree = "<group>";
+		};
+		54722AD1256A415300CB8A1D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54722AD2256A41B700CB8A1D /* AnimeResult.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54722AC0256A2D7400CB8A1D /* HomeViewController.swift in Sources */,
+				54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */,
 				54722ABC256A2CE100CB8A1D /* MainTabViewController.swift in Sources */,
 				54722ACA256A302000CB8A1D /* JikanClient.swift in Sources */,
 				54722A99256A2B8600CB8A1D /* AppDelegate.swift in Sources */,
