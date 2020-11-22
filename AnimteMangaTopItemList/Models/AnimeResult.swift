@@ -12,7 +12,7 @@ struct AnimeResult: Decodable {
   let top: [AnimeItem]?
 }
 
-struct AnimeItem: Decodable {
+struct AnimeItem: Decodable, Equatable {
   let title: String?
   let url: String?
   let imageUrl: String?

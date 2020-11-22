@@ -21,6 +21,9 @@
 		54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACD256A346B00CB8A1D /* MockURLSession.swift */; };
 		54722AD0256A347600CB8A1D /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */; };
 		54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AD2256A41B700CB8A1D /* AnimeResult.swift */; };
+		54722AD7256A50B400CB8A1D /* Data+JSONFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AD6256A50B400CB8A1D /* Data+JSONFile.swift */; };
+		54722ADA256A519A00CB8A1D /* GET_AnimeResult_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 54722AD9256A519A00CB8A1D /* GET_AnimeResult_Response.json */; };
+		54722ADC256A5B1600CB8A1D /* GET_MissingValues_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		54722ACD256A346B00CB8A1D /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		54722AD2256A41B700CB8A1D /* AnimeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeResult.swift; sourceTree = "<group>"; };
+		54722AD6256A50B400CB8A1D /* Data+JSONFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSONFile.swift"; sourceTree = "<group>"; };
+		54722AD9256A519A00CB8A1D /* GET_AnimeResult_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_AnimeResult_Response.json; sourceTree = "<group>"; };
+		54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_MissingValues_Response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				54722ACC256A345B00CB8A1D /* Cases */,
-				54722ACB256A344F00CB8A1D /* Mocks */,
+				54722AD8256A517800CB8A1D /* Data */,
+				54722AD4256A509600CB8A1D /* Test Types */,
 				54722AAF256A2B8600CB8A1D /* AnimteMangaTopItemListTests.swift */,
 				54722AB1256A2B8600CB8A1D /* Info.plist */,
 			);
@@ -166,6 +173,32 @@
 				54722AD2256A41B700CB8A1D /* AnimeResult.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		54722AD4256A509600CB8A1D /* Test Types */ = {
+			isa = PBXGroup;
+			children = (
+				54722AD5256A50A500CB8A1D /* Extensions */,
+				54722ACB256A344F00CB8A1D /* Mocks */,
+			);
+			path = "Test Types";
+			sourceTree = "<group>";
+		};
+		54722AD5256A50A500CB8A1D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				54722AD6256A50B400CB8A1D /* Data+JSONFile.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		54722AD8256A517800CB8A1D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				54722AD9256A519A00CB8A1D /* GET_AnimeResult_Response.json */,
+				54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +292,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54722ADC256A5B1600CB8A1D /* GET_MissingValues_Response.json in Resources */,
+				54722ADA256A519A00CB8A1D /* GET_AnimeResult_Response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */,
+				54722AD7256A50B400CB8A1D /* Data+JSONFile.swift in Sources */,
 				54722AD0256A347600CB8A1D /* MockURLSessionDataTask.swift in Sources */,
 				54722AC7256A2FB500CB8A1D /* JikanClientTests.swift in Sources */,
 				54722AB0256A2B8600CB8A1D /* AnimteMangaTopItemListTests.swift in Sources */,
