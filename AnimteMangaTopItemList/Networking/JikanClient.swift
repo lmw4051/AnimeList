@@ -13,6 +13,12 @@ class JikanClient {
   let session: URLSession
   let responseQueue: DispatchQueue?
   
+  static let shared = JikanClient(
+    baseURL: URL(string: "https://api.jikan.moe/v3/top/")!,
+    session: .shared,
+    responseQueue: .main
+  )
+  
   init(baseURL: URL,
        session: URLSession,
        responseQueue: DispatchQueue?) {

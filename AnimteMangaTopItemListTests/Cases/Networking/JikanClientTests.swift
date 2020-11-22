@@ -94,6 +94,31 @@ class JikanClientTests: XCTestCase {
     }
   }
   
+  // MARK: - Static Properties - Tests
+  func test_shared_setsBaseURL() {
+    // given
+    let baseURL = URL(string: "https://api.jikan.moe/v3/top/")!
+    
+    // then
+    XCTAssertEqual(JikanClient.shared.baseURL, baseURL)
+  }
+  
+  func test_shared_setsSession() {
+    // given
+    let session = URLSession.shared
+    
+    // then
+    XCTAssertEqual(JikanClient.shared.session, session)
+  }
+  
+  func test_shared_setsResponseQueue() {
+    // given
+    let responseQueue = DispatchQueue.main
+    
+    // then
+    XCTAssertEqual(JikanClient.shared.responseQueue, responseQueue)
+  }
+  
   // MARK: - Object Lifecycle - Tests
   func test_init_sets_baseURL() {
     XCTAssertEqual(sut.baseURL, baseURL)
