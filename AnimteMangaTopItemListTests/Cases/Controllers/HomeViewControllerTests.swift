@@ -12,6 +12,7 @@ import XCTest
 class HomeViewControllerTests: XCTestCase {
   // MARK: - Instance Properties
   var sut: HomeViewController!
+  var mockNetworkClient: MockJikanService!
   
   // MARK: - Test Lifecycle
   override func setUp() {
@@ -20,11 +21,66 @@ class HomeViewControllerTests: XCTestCase {
   }
   
   override func tearDown() {
+    mockNetworkClient = nil
     sut = nil
     super.tearDown()
   }
   
+  // MARK: - Given
+  func givenMockNetworkClient() {
+    mockNetworkClient = MockJikanService()
+    sut.networkClient = mockNetworkClient
+  }
+  
   func test_networkClient_setToJikanClient() {
-    XCTAssertTrue(sut.networkClient === JikanClient.shared)
+    XCTAssertTrue((sut.networkClient as? JikanClient) === JikanClient.shared)
+  }
+  
+  func test_loadTopListData_setsRequest() {
+    // given
+    givenMockNetworkClient()
+    
+    // when
+    sut.loadTopList()
+    
+    // then
+    XCTAssertEqual(sut.dataTask, mockNetworkClient.getAnimeResultDataTask)
+  }
+  
+  func test_loadTopListData_ifAlreadyLoading_doesntCallAgain() {
+    // given
+    givenMockNetworkClient()
+    
+    // when
+    sut.loadTopList()
+    sut.loadTopList()
+    
+    // then
+    XCTAssertEqual(mockNetworkClient.getAnimeResultCallCount, 1)
+  }
+  
+  func test_loadTopListData_completionNilsDataTask() {
+    // given
+    givenMockNetworkClient()
+    
+  }
+}
+
+// MARK: - Mocks
+extension HomeViewControllerTests {
+  class PartialMockHomeViewController: HomeViewController {
+    override func loadView() {
+      super.loadView()
+    }
+    
+    var onTopListData: (() -> Void)? = nil
+    
+    override func loadTopList() {
+      guard let onTopListData = onTopListData else {
+        super.loadTopList()
+        return
+      }
+      onTopListData()
+    }
   }
 }

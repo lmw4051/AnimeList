@@ -25,6 +25,7 @@
 		54722ADA256A519A00CB8A1D /* GET_AnimeResult_ValidResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 54722AD9256A519A00CB8A1D /* GET_AnimeResult_ValidResponse.json */; };
 		54722ADC256A5B1600CB8A1D /* GET_MissingValues_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */; };
 		54722AE1256A706400CB8A1D /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE0256A706400CB8A1D /* HomeViewControllerTests.swift */; };
+		54722AE3256A748500CB8A1D /* MockJikanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE2256A748500CB8A1D /* MockJikanService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		54722AD9256A519A00CB8A1D /* GET_AnimeResult_ValidResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_AnimeResult_ValidResponse.json; sourceTree = "<group>"; };
 		54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_MissingValues_Response.json; sourceTree = "<group>"; };
 		54722AE0256A706400CB8A1D /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		54722AE2256A748500CB8A1D /* MockJikanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJikanService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				54722ACD256A346B00CB8A1D /* MockURLSession.swift */,
 				54722ACF256A347600CB8A1D /* MockURLSessionDataTask.swift */,
+				54722AE2256A748500CB8A1D /* MockJikanService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54722AE3256A748500CB8A1D /* MockJikanService.swift in Sources */,
 				54722ACE256A346B00CB8A1D /* MockURLSession.swift in Sources */,
 				54722AE1256A706400CB8A1D /* HomeViewControllerTests.swift in Sources */,
 				54722AD7256A50B400CB8A1D /* Data+JSONFile.swift in Sources */,
