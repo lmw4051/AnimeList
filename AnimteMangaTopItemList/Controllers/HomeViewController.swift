@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SafariServices
 
 class HomeViewController: UIViewController, CustomPickerViewDelegate {
   // MARK: - Instance Properties
@@ -154,6 +155,16 @@ extension HomeViewController: UITableViewDelegate {
     activityIndicatorView.fillSuperview()
     activityIndicatorView.constrainHeight(constant: 24)
     return footerView
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    if let url = URL(string: items[indexPath.row].url!) {
+      let safari = SFSafariViewController(url: url)
+      present(safari, animated: true, completion: nil)
+    }
+    
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }
 
