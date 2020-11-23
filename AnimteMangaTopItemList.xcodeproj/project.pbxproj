@@ -35,6 +35,8 @@
 		54722AF0256C0FF800CB8A1D /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AEF256C0FF800CB8A1D /* UIColor+Additions.swift */; };
 		54722AF2256C10E400CB8A1D /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF1256C10E400CB8A1D /* String+Date.swift */; };
 		54722AF4256C19D800CB8A1D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF3256C19D800CB8A1D /* FavoriteItem.swift */; };
+		54722AF6256C246A00CB8A1D /* UITableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF5256C246A00CB8A1D /* UITableViewCell+Identifier.swift */; };
+		54722AF8256C290F00CB8A1D /* FavoriteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF7256C290F00CB8A1D /* FavoriteItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		54722AEF256C0FF800CB8A1D /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		54722AF1256C10E400CB8A1D /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		54722AF3256C19D800CB8A1D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		54722AF5256C246A00CB8A1D /* UITableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifier.swift"; sourceTree = "<group>"; };
+		54722AF7256C290F00CB8A1D /* FavoriteItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCell.swift; sourceTree = "<group>"; };
 		568D7026F998202953E08324 /* Pods-AnimteMangaTopItemList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemList.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemList/Pods-AnimteMangaTopItemList.release.xcconfig"; sourceTree = "<group>"; };
 		66EC3BB6CF2CDD5C86CC9A76 /* Pods-AnimteMangaTopItemListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8403EE7AD348373B7D62B5 /* Pods-AnimteMangaTopItemListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				54722AE7256BFA1A00CB8A1D /* UIViewController+Additions.swift */,
 				54722AEF256C0FF800CB8A1D /* UIColor+Additions.swift */,
 				54722AF1256C10E400CB8A1D /* String+Date.swift */,
+				54722AF5256C246A00CB8A1D /* UITableViewCell+Identifier.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			children = (
 				54722AEB256C034800CB8A1D /* ItemCell.swift */,
 				54722AED256C08AF00CB8A1D /* SearchItemCell.swift */,
+				54722AF7256C290F00CB8A1D /* FavoriteItemCell.swift */,
 			);
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
@@ -462,11 +468,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54722AF8256C290F00CB8A1D /* FavoriteItemCell.swift in Sources */,
 				54722AC0256A2D7400CB8A1D /* HomeViewController.swift in Sources */,
 				54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */,
 				54722AF4256C19D800CB8A1D /* FavoriteItem.swift in Sources */,
 				54722AF2256C10E400CB8A1D /* String+Date.swift in Sources */,
 				54722ABC256A2CE100CB8A1D /* MainTabViewController.swift in Sources */,
+				54722AF6256C246A00CB8A1D /* UITableViewCell+Identifier.swift in Sources */,
 				54722AEE256C08AF00CB8A1D /* SearchItemCell.swift in Sources */,
 				54722ACA256A302000CB8A1D /* JikanClient.swift in Sources */,
 				54722AF0256C0FF800CB8A1D /* UIColor+Additions.swift in Sources */,

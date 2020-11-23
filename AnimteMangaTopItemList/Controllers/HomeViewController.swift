@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   var items = [AnimeItem]()
   
   let tableView = UITableView(frame: .zero, style: .plain)
-  let itemCellId = "SearchItemCell"
   var loadingView = UIActivityIndicatorView()
   
   var animeItems: Results<FavoriteItem>?
@@ -76,7 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   }
   
   // MARK: - Favorite Setup
-  func setupFavoritesNotificationToken() {
+  private func setupFavoritesNotificationToken() {
     do {
       let realm = try Realm()
       animeItems = realm.objects(FavoriteItem.self)
@@ -102,7 +101,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.register(SearchItemCell.self, forCellReuseIdentifier: itemCellId)
+    tableView.register(SearchItemCell.self, forCellReuseIdentifier: SearchItemCell.identifier)
   }
 }
 
@@ -112,7 +111,7 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! SearchItemCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: SearchItemCell.identifier, for: indexPath) as! SearchItemCell
     cell.item = items[indexPath.row]
     cell.isFavorite = animeItems?.first(where: { return $0.identity == items[indexPath.row].identity}) != nil
     
