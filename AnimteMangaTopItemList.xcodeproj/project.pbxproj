@@ -26,6 +26,8 @@
 		54722ADC256A5B1600CB8A1D /* GET_MissingValues_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = 54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */; };
 		54722AE1256A706400CB8A1D /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE0256A706400CB8A1D /* HomeViewControllerTests.swift */; };
 		54722AE3256A748500CB8A1D /* MockJikanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE2256A748500CB8A1D /* MockJikanService.swift */; };
+		54722AE6256BF78500CB8A1D /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE5256BF78500CB8A1D /* UIView+AutoLayout.swift */; };
+		54722AE8256BFA1A00CB8A1D /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AE7256BFA1A00CB8A1D /* UIViewController+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		54722ADB256A5B1600CB8A1D /* GET_MissingValues_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_MissingValues_Response.json; sourceTree = "<group>"; };
 		54722AE0256A706400CB8A1D /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		54722AE2256A748500CB8A1D /* MockJikanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJikanService.swift; sourceTree = "<group>"; };
+		54722AE5256BF78500CB8A1D /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		54722AE7256BFA1A00CB8A1D /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		54722A97256A2B8600CB8A1D /* AnimteMangaTopItemList */ = {
 			isa = PBXGroup;
 			children = (
+				54722AE4256BF76C00CB8A1D /* Helpers */,
 				54722AD1256A415300CB8A1D /* Models */,
 				54722AC8256A301100CB8A1D /* Networking */,
 				54722ABA256A2CD000CB8A1D /* Controllers */,
@@ -215,6 +220,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		54722AE4256BF76C00CB8A1D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				54722AE5256BF78500CB8A1D /* UIView+AutoLayout.swift */,
+				54722AE7256BFA1A00CB8A1D /* UIViewController+Additions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,6 +337,8 @@
 				54722ABC256A2CE100CB8A1D /* MainTabViewController.swift in Sources */,
 				54722ACA256A302000CB8A1D /* JikanClient.swift in Sources */,
 				54722A99256A2B8600CB8A1D /* AppDelegate.swift in Sources */,
+				54722AE8256BFA1A00CB8A1D /* UIViewController+Additions.swift in Sources */,
+				54722AE6256BF78500CB8A1D /* UIView+AutoLayout.swift in Sources */,
 				54722AC2256A2D9B00CB8A1D /* FavoritesViewController.swift in Sources */,
 				54722A9B256A2B8600CB8A1D /* SceneDelegate.swift in Sources */,
 			);
