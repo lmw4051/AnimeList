@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   var items = [AnimeItem]()
   
   let tableView = UITableView(frame: .zero, style: .plain)
-  let itemCellId = "ItemCell"
+  let itemCellId = "SearchItemCell"
   var loadingView = UIActivityIndicatorView()
   
   // MARK: - View Lifecycle
@@ -30,11 +30,11 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    loadTopList()
+    loadTopItems()
   }
   
   // MARK: - Refresh
-  func loadTopList() {
+  func loadTopItems() {
     let page = items.count / 50 + 1
     var lastIndex = items.count - 1
     guard dataTask == nil else { return }
@@ -77,7 +77,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     tableView.delegate = self
     tableView.dataSource = self
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemCellId)
+    tableView.register(SearchItemCell.self, forCellReuseIdentifier: itemCellId)
   }
 }
 
@@ -87,11 +87,11 @@ extension HomeViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath)
-    cell.textLabel?.text = items[indexPath.row].title
+    let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! SearchItemCell
+    cell.item = items[indexPath.row]
     
     if indexPath.row == items.count - 1 {
-      loadTopList()
+      loadTopItems()
     }
     
     return cell

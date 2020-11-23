@@ -130,12 +130,12 @@ extension UIView {
   }
   
   @discardableResult
-  func stack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
+  func vStack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
     return _stack(.vertical, views: views, spacing: spacing, alignment: alignment, distribution: distribution)
   }
   
   @discardableResult
-  func hstack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
+  func hStack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
     return _stack(.horizontal, views: views, spacing: spacing, alignment: alignment, distribution: distribution)
   }
   
@@ -150,3 +150,4 @@ extension UIView {
 struct AnchoredConstraints {
   var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
+

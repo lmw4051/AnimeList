@@ -36,12 +36,12 @@ class HomeViewControllerTests: XCTestCase {
     XCTAssertTrue((sut.networkClient as? JikanClient) === JikanClient.shared)
   }
   
-  func test_loadTopListData_setsRequest() {
+  func test_loadTopItemsData_setsRequest() {
     // given
     givenMockNetworkClient()
     
     // when
-    sut.loadTopList()
+    sut.loadTopItems()
     
     // then
     XCTAssertEqual(sut.dataTask, mockNetworkClient.getAnimeResultDataTask)
@@ -52,8 +52,8 @@ class HomeViewControllerTests: XCTestCase {
     givenMockNetworkClient()
     
     // when
-    sut.loadTopList()
-    sut.loadTopList()
+    sut.loadTopItems()
+    sut.loadTopItems()
     
     // then
     XCTAssertEqual(mockNetworkClient.getAnimeResultCallCount, 1)
@@ -75,9 +75,9 @@ extension HomeViewControllerTests {
     
     var onTopListData: (() -> Void)? = nil
     
-    override func loadTopList() {
+    override func loadTopItems() {
       guard let onTopListData = onTopListData else {
-        super.loadTopList()
+        super.loadTopItems()
         return
       }
       onTopListData()
