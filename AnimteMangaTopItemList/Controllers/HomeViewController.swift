@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: UIViewController, UITableViewDelegate {
+class HomeViewController: UIViewController {
   // MARK: - Instance Properties
   var networkClient: JikanService = JikanClient.shared
   var dataTask: URLSessionDataTask?
@@ -20,10 +20,12 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   var items = [AnimeItem]()
   
   let tableView = UITableView(frame: .zero, style: .plain)
-  var loadingView = UIActivityIndicatorView()
+  var activityIndicatorView = UIActivityIndicatorView()
   
   var animeItems: Results<FavoriteItem>?
   private var notificationToken: NotificationToken?
+  
+  let filteredView = TypeSelectionView()
   
   // MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -43,15 +45,16 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     var lastIndex = items.count - 1
     guard dataTask == nil else { return }
     
-    loadingView.startAnimating()
+    activityIndicatorView.startAnimating()
     
-    dataTask = networkClient.getTopList(type: mainType, subType: subType, page: page, completion: { animeResult, error in
+    dataTask = networkClient.getTopList(type: mainType, subType: subType, page: page, completion: { [weak self] animeResult, error in
+      guard let self = self else { return }
       self.dataTask = nil
       
       if let error = error {
         DispatchQueue.main.async {
           self.showErrorAlert(error: error)
-          self.loadingView.stopAnimating()
+          self.activityIndicatorView.stopAnimating()
         }
         return
       }
@@ -68,7 +71,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
           self.tableView.beginUpdates()
           self.tableView.insertRows(at: indexPaths, with: .automatic)
           self.tableView.endUpdates()
-          self.loadingView.stopAnimating()
+          self.activityIndicatorView.stopAnimating()
         }
       }
     })
@@ -96,15 +99,27 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   
   // MARK: - ConfigureViews
   private func configureViews() {
+    let navBarView = UIView()
+    navBarView.backgroundColor = .rgb(red: 255, green: 128, blue: 0)
+    view.addSubview(navBarView)
+    navBarView.setupShadow(opacity: 0.5, radius: 5)
+    navBarView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: -80, right: 0))
+    
+    filteredView.typeTF.text = mainType
+    filteredView.subTypeTF.text = subType
+    navBarView.addSubview(filteredView)
+    filteredView.fillSuperviewSafeAreaLayoutGuide()    
+    
     view.addSubview(tableView)
     tableView.backgroundColor = .white
-    tableView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+    tableView.anchor(top: navBarView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(SearchItemCell.self, forCellReuseIdentifier: SearchItemCell.identifier)
   }
 }
 
+// MARK: - UITableViewDataSource Methods
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
@@ -120,5 +135,17 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     return cell
+  }
+}
+
+// MARK: - UITableViewDelegate Methods
+extension HomeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let footerView = UIView()
+    footerView.addSubview(activityIndicatorView)
+    activityIndicatorView.color = .lightGray
+    activityIndicatorView.fillSuperview()
+    activityIndicatorView.constrainHeight(constant: 24)
+    return footerView
   }
 }
