@@ -12,7 +12,18 @@ struct AnimeResult: Decodable {
   let top: [AnimeItem]?
 }
 
-struct AnimeItem: Decodable, Equatable {
+protocol Anime {
+    var title: String? { get }
+    var url: String? { get }
+    var imageUrl: String? { get }
+    var type: String? { get }
+    var startDate: String? { get }
+    var endDate: String? { get }
+    var identity: Int { get }
+    var rank: Int { get }
+}
+
+struct AnimeItem: Decodable, Equatable, Anime {
   let title: String?
   let url: String?
   let imageUrl: String?

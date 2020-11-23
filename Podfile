@@ -7,6 +7,7 @@ target 'AnimteMangaTopItemList' do
 
   # Pods for AnimteMangaTopItemList
   pod 'SDWebImage', '~> 5.0'
+  pod 'RealmSwift'
 
   target 'AnimteMangaTopItemListTests' do
     inherit! :search_paths

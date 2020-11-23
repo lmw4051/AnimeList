@@ -50,7 +50,7 @@ class ItemCell: UITableViewCell {
       return label
   }()
   
-  func updateUI(_ item: AnimeItem?) {
+  func updateUI(_ item: Anime?) {
     if let imageUrl = item?.imageUrl {
       thumbnailImageView.sd_setImage(with: URL(string: imageUrl))
     } else {
@@ -90,5 +90,11 @@ class ItemCell: UITableViewCell {
     thumbnailImageView.constrainHeight(constant: 80)
     addSubview(containerView)
     containerView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 8, left: 0, bottom: 8, right: 0))
+  }
+  
+  func showError(error: Error) {
+    let tabVC = UIApplication.shared.windows.first!.rootViewController as! MainTabViewController
+    let vc = tabVC.viewControllers?[tabVC.selectedIndex]
+    vc?.showErrorAlert(error: error)
   }
 }

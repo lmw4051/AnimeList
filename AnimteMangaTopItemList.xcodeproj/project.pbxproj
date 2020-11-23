@@ -34,6 +34,7 @@
 		54722AEE256C08AF00CB8A1D /* SearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AED256C08AF00CB8A1D /* SearchItemCell.swift */; };
 		54722AF0256C0FF800CB8A1D /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AEF256C0FF800CB8A1D /* UIColor+Additions.swift */; };
 		54722AF2256C10E400CB8A1D /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF1256C10E400CB8A1D /* String+Date.swift */; };
+		54722AF4256C19D800CB8A1D /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF3256C19D800CB8A1D /* FavoriteItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		54722AED256C08AF00CB8A1D /* SearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCell.swift; sourceTree = "<group>"; };
 		54722AEF256C0FF800CB8A1D /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		54722AF1256C10E400CB8A1D /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		54722AF3256C19D800CB8A1D /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		568D7026F998202953E08324 /* Pods-AnimteMangaTopItemList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemList.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemList/Pods-AnimteMangaTopItemList.release.xcconfig"; sourceTree = "<group>"; };
 		66EC3BB6CF2CDD5C86CC9A76 /* Pods-AnimteMangaTopItemListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8403EE7AD348373B7D62B5 /* Pods-AnimteMangaTopItemListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				54722AD2256A41B700CB8A1D /* AnimeResult.swift */,
+				54722AF3256C19D800CB8A1D /* FavoriteItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			files = (
 				54722AC0256A2D7400CB8A1D /* HomeViewController.swift in Sources */,
 				54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */,
+				54722AF4256C19D800CB8A1D /* FavoriteItem.swift in Sources */,
 				54722AF2256C10E400CB8A1D /* String+Date.swift in Sources */,
 				54722ABC256A2CE100CB8A1D /* MainTabViewController.swift in Sources */,
 				54722AEE256C08AF00CB8A1D /* SearchItemCell.swift in Sources */,
@@ -641,7 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36872U436D;
 				INFOPLIST_FILE = AnimteMangaTopItemList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,7 +665,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36872U436D;
 				INFOPLIST_FILE = AnimteMangaTopItemList/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

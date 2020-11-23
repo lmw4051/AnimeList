@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController, UITableViewDelegate {
   // MARK: - Instance Properties
@@ -22,10 +23,14 @@ class HomeViewController: UIViewController, UITableViewDelegate {
   let itemCellId = "SearchItemCell"
   var loadingView = UIActivityIndicatorView()
   
+  var animeItems: Results<FavoriteItem>?
+  private var notificationToken: NotificationToken?
+  
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configureViews()
+    setupFavoritesNotificationToken()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     loadTopItems()
   }
   
-  // MARK: - Refresh
+  // MARK: - Loading data from server
   func loadTopItems() {
     let page = items.count / 50 + 1
     var lastIndex = items.count - 1
@@ -70,6 +75,26 @@ class HomeViewController: UIViewController, UITableViewDelegate {
     })
   }
   
+  // MARK: - Favorite Setup
+  func setupFavoritesNotificationToken() {
+    do {
+      let realm = try Realm()
+      animeItems = realm.objects(FavoriteItem.self)
+      notificationToken = animeItems?.observe { [weak self] (changes: RealmCollectionChange) in
+        guard let self = self else { return }
+        
+        switch changes {
+        case .initial, .update(_, _, _, _):
+          self.tableView.reloadData()
+        case .error(let error):
+          self.showErrorAlert(error: error)
+        }
+      }
+    } catch let error as NSError {
+      showErrorAlert(error: error)
+    }
+  }
+  
   // MARK: - ConfigureViews
   private func configureViews() {
     view.addSubview(tableView)
@@ -89,6 +114,7 @@ extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: itemCellId, for: indexPath) as! SearchItemCell
     cell.item = items[indexPath.row]
+    cell.isFavorite = animeItems?.first(where: { return $0.identity == items[indexPath.row].identity}) != nil
     
     if indexPath.row == items.count - 1 {
       loadTopItems()
