@@ -9,13 +9,19 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CustomPickerViewDelegate {
   // MARK: - Instance Properties
   var networkClient: JikanService = JikanClient.shared
   var dataTask: URLSessionDataTask?
   
   var mainType = "anime"
   var subType: String? = "airing"
+  
+  let mainTypes = ["anime", "manga", "people", "characters"]
+  let typeMap: [String : [String]] = [
+    "anime": ["airing", "upcoming", "tv", "movie" ,"ova", "special", "bypopularity", "favorite"],
+    "manga": ["manga", "novels", "oneshots", "doujin" ,"manhwa", "manhua", "bypopularity", "favorite"]
+  ]
   
   var items = [AnimeItem]()
   
@@ -25,7 +31,7 @@ class HomeViewController: UIViewController {
   var animeItems: Results<FavoriteItem>?
   private var notificationToken: NotificationToken?
   
-  let filteredView = TypeSelectionView()
+  let selectionView = TypeSelectionView()
   
   // MARK: - View Lifecycle
   override func viewDidLoad() {
@@ -105,10 +111,11 @@ class HomeViewController: UIViewController {
     navBarView.setupShadow(opacity: 0.5, radius: 5)
     navBarView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: -80, right: 0))
     
-    filteredView.typeTF.text = mainType
-    filteredView.subTypeTF.text = subType
-    navBarView.addSubview(filteredView)
-    filteredView.fillSuperviewSafeAreaLayoutGuide()    
+    selectionView.typeTF.text = mainType
+    selectionView.subTypeTF.text = subType
+    navBarView.addSubview(selectionView)
+    selectionView.fillSuperviewSafeAreaLayoutGuide()
+    selectionView.delegate = self
     
     view.addSubview(tableView)
     tableView.backgroundColor = .white
@@ -147,5 +154,48 @@ extension HomeViewController: UITableViewDelegate {
     activityIndicatorView.fillSuperview()
     activityIndicatorView.constrainHeight(constant: 24)
     return footerView
+  }
+}
+
+// MARK: - TypeSelectionView Methods
+extension HomeViewController: TypeSelectionViewdelegate {
+  func presentPicker(selectType: SelectionType) {
+    let customPV: CustomPickerView
+    
+    if selectType == .mainType {
+      customPV = CustomPickerView(types: mainTypes, selectionType: selectType, value: mainType)
+    } else {
+      guard let subTypes = typeMap[mainType] else { return }
+      customPV = CustomPickerView(types: subTypes, selectionType: selectType, value: subType)
+    }
+    
+    customPV.delegate = self
+    view.addSubview(customPV)
+    customPV.fillSuperview()
+    view.layoutIfNeeded()
+    customPV.presentInAnimation()
+  }
+  
+  func changeSelectionType(type: SelectionType, value: String) {
+    if type == .mainType {
+      mainType = value
+      
+      if let defaultSubType = typeMap[mainType]?.first {
+        subType = defaultSubType
+      } else {
+        subType = nil
+      }
+    } else {
+      subType = value
+    }
+    
+    selectionView.typeTF.text = mainType
+    selectionView.subTypeTF.text = subType != nil ? subType : "Not available"
+    
+    DispatchQueue.main.async {
+      self.items.removeAll()
+      self.tableView.reloadData()
+      self.loadTopItems()
+    }
   }
 }

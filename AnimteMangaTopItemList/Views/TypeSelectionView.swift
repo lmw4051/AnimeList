@@ -8,12 +8,21 @@
 
 import UIKit
 
+enum SelectionType {
+  case mainType
+  case subType
+}
 
+protocol TypeSelectionViewdelegate: class {
+  func presentPicker(selectType: SelectionType)
+}
 
 class TypeSelectionView: UIView {
   // MARK: - Instance Properties
   let typeTF = CustomTextField(padding: 12, cornerRadius: 6, backgroundColor: .init(white: 1, alpha: 0.3), textColor: .darkGray)
   let subTypeTF = CustomTextField(padding: 12, cornerRadius: 6, backgroundColor: .init(white: 1, alpha: 0.3), textColor: .darkGray)
+  
+  weak var delegate: TypeSelectionViewdelegate?
   
   // MARK: - View Lifecycle
   override init(frame: CGRect) {
@@ -57,10 +66,10 @@ extension TypeSelectionView: UITextFieldDelegate {
   }
   
   private func presentTypePicker() {
-    print("presentTypePicker")
+    delegate?.presentPicker(selectType: .mainType)
   }
   
   private func presentSubtypePicker() {
-    print("presentSubtypePicker")
+    delegate?.presentPicker(selectType: .subType)
   }
 }

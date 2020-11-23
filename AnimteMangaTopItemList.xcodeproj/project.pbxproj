@@ -39,6 +39,7 @@
 		54722AF8256C290F00CB8A1D /* FavoriteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF7256C290F00CB8A1D /* FavoriteItemCell.swift */; };
 		54722AFA256C348100CB8A1D /* TypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AF9256C348100CB8A1D /* TypeSelectionView.swift */; };
 		54722AFC256C34CF00CB8A1D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AFB256C34CF00CB8A1D /* CustomTextField.swift */; };
+		54722AFE256C3F2300CB8A1D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54722AFD256C3F2300CB8A1D /* CustomPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		54722AF7256C290F00CB8A1D /* FavoriteItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCell.swift; sourceTree = "<group>"; };
 		54722AF9256C348100CB8A1D /* TypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSelectionView.swift; sourceTree = "<group>"; };
 		54722AFB256C34CF00CB8A1D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		54722AFD256C3F2300CB8A1D /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		568D7026F998202953E08324 /* Pods-AnimteMangaTopItemList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemList.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemList/Pods-AnimteMangaTopItemList.release.xcconfig"; sourceTree = "<group>"; };
 		66EC3BB6CF2CDD5C86CC9A76 /* Pods-AnimteMangaTopItemListTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8403EE7AD348373B7D62B5 /* Pods-AnimteMangaTopItemListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimteMangaTopItemListTests.release.xcconfig"; path = "Target Support Files/Pods-AnimteMangaTopItemListTests/Pods-AnimteMangaTopItemListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				54722AEA256C033700CB8A1D /* CustomTableViewCell */,
 				54722AF9256C348100CB8A1D /* TypeSelectionView.swift */,
+				54722AFD256C3F2300CB8A1D /* CustomPickerView.swift */,
 				54722AFB256C34CF00CB8A1D /* CustomTextField.swift */,
 			);
 			path = Views;
@@ -476,6 +479,7 @@
 			files = (
 				54722AF8256C290F00CB8A1D /* FavoriteItemCell.swift in Sources */,
 				54722AC0256A2D7400CB8A1D /* HomeViewController.swift in Sources */,
+				54722AFE256C3F2300CB8A1D /* CustomPickerView.swift in Sources */,
 				54722AFA256C348100CB8A1D /* TypeSelectionView.swift in Sources */,
 				54722AD3256A41B700CB8A1D /* AnimeResult.swift in Sources */,
 				54722AF4256C19D800CB8A1D /* FavoriteItem.swift in Sources */,
