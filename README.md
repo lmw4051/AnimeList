@@ -5,5 +5,4 @@ Databaser: Realm
 
 Dont't forget to call pod install after cloning!
 
-![Image Link](https://i.imgur.com/9v1LHha.png)
-![Image Link](https://i.imgur.com/xVyNfEP.png)
+![image](https://github.com/lmw4051/AnimeList/blob/master/AnimeList.gif)
